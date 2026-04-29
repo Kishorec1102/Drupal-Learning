@@ -1,0 +1,29 @@
+<section class="cxo-section cxo-next-steps" aria-label="Next Steps">
+  <h2>Next Steps:</h2>
+  <p>
+    In order to complete our comprehensive Digital Health &amp; Growth Assessment to identify
+    opportunities for improvement across your ecosystem, CXO needs additional access. This is,
+    of course, to identify opportunities for ecosystem health, maturity, competitive feature
+    analysis &amp; recommendations at your discretion.
+  </p>
+  <p>
+    For "XYZ organization", additional insight can be provided for our comprehensive assessment,
+    given access or stakeholder consultation on:
+  </p>
+
+  <div class="cxo-next-table">
+    <div class="cxo-next-head">
+      <strong>Access Requested...</strong>
+      <strong>...To Discover...</strong>
+      <strong>...In Order To:</strong>
+    </div>
+
+    {% for row in next_steps %}
+      <div class="cxo-next-row">
+        <strong>{{ row.0 }}</strong>
+        <p>{{ row.1 }}</p>
+        <p>{{ row.2 }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</section>

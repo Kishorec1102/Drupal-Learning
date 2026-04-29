@@ -1,0 +1,41 @@
+{% for panel in panels %}
+  <section class="cxo-section cxo-detail-section" aria-label="{{ panel.name }}">
+    <aside class="cxo-sidebar">
+      <button type="button" class="cxo-back">&lsaquo;</button>
+      {% for item in categories %}
+        <article class="cxo-nav-card{{ loop.index0 == panel.active ? ' is-active' : '' }}">
+          <span class="cxo-icon">{{ item.icon }}</span>
+          <strong>{{ item.name }}</strong>
+        </article>
+      {% endfor %}
+    </aside>
+
+    <article class="cxo-detail-card cxo-{{ panel.tone }}">
+      <header>
+        <div>
+          <h3>{{ panel.name }}</h3>
+          <p>Score: <strong>{{ panel.score }}</strong></p>
+        </div>
+        <div class="cxo-progress">
+          <span style="width: {{ panel.percent }}"></span>
+        </div>
+        <strong>{{ panel.percent }}</strong>
+      </header>
+
+      <div class="cxo-table">
+        <div class="cxo-table-head">
+          <strong>Consideration</strong>
+          <strong>Performance</strong>
+          <strong>Notes</strong>
+        </div>
+        {% for row in panel.rows %}
+          <div class="cxo-table-row">
+            <strong>{{ row.0 }}</strong>
+            <span class="cxo-pill cxo-pill-{{ row.1|lower|replace({' ': '-'}) }}">{{ row.1 }}</span>
+            <p>{{ row.2 }} <a href="#">Learn more</a></p>
+          </div>
+        {% endfor %}
+      </div>
+    </article>
+  </section>
+{% endfor %}

@@ -1,0 +1,12 @@
+<section class="cxo-section cxo-category-section" aria-label="Assessment categories">
+  <div class="cxo-category-grid">
+    {% for item in categories %}
+      <article class="cxo-category-card cxo-{{ item.tone }}">
+        <span class="cxo-icon">{{ item.icon }}</span>
+        <h3>{{ item.name }}</h3>
+        <p>{{ item.text }}</p>
+        <strong>{{ item.score }}</strong>
+      </article>
+    {% endfor %}
+  </div>
+</section>

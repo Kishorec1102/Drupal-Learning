@@ -1,0 +1,104 @@
+{{ attach_library('cxo_theme/global') }}
+
+{% set categories = [
+  {
+    name: 'Tech & Platform Performance',
+    text: 'Performance, security, compliance & backend setup',
+    score: '23/25',
+    tone: 'green',
+    icon: 'SH'
+  },
+  {
+    name: 'Marketing, Conversions & Growth',
+    text: 'User experience, purchase path & top-of-funnel growth',
+    score: '19/25',
+    tone: 'orange',
+    icon: 'MK'
+  },
+  {
+    name: 'Digital GTM Efficiency',
+    text: 'Internal processes & business functions efficiency',
+    score: '18/25',
+    tone: 'purple',
+    icon: 'GT'
+  },
+  {
+    name: 'Automation & AI',
+    text: 'AI integration in business processes & digital operations',
+    score: '9/25',
+    tone: 'blue',
+    icon: 'AI'
+  }
+] %}
+
+{% set panels = [
+  {
+    name: 'Technology & Platform Performance',
+    score: '23 / 25',
+    percent: '92%',
+    tone: 'green',
+    active: 0,
+    rows: [
+      ['Core Web Vitals - Web', 'Medium', 'Score is 63. Time to load is 3.5 seconds across Safari, Chrome and Opera. 8 common issues & 13 code-specific issues.'],
+      ['Core Web Vitals - Mobile', 'Low', 'Score is 32. Time to load is 5.5 seconds across Safari, Chrome and Opera. 19 common issues & 20 code-specific issues.'],
+      ['Coding Best Practices', 'Undiscovered', 'Extensions, plugins, and code vulnerabilities assessment pending.'],
+      ['Security - Web', 'High', '3 recommendations identified, no critical issues.']
+    ]
+  },
+  {
+    name: 'Marketing, Conversions & Growth',
+    score: '19 / 25',
+    percent: '76%',
+    tone: 'orange',
+    active: 1,
+    rows: [
+      ['Landing Page Journey', 'Medium', 'Purchase path, form friction, and campaign message continuity need focused optimization.'],
+      ['Conversion Tracking', 'Medium', 'Analytics coverage exists, but attribution and event quality should be tightened.'],
+      ['Top-of-Funnel Growth', 'Low', 'Organic discovery and content-led acquisition opportunities are underused.'],
+      ['Campaign Operations', 'High', 'Core campaign workflow is usable with several improvement opportunities.']
+    ]
+  },
+  {
+    name: 'Digital Go-To-Market Efficiency',
+    score: '18 / 25',
+    percent: '72%',
+    tone: 'purple',
+    active: 2,
+    rows: [
+      ['BPO using Automation & A.I.', 'Undiscovered', 'Use of AI within common business processes associated with digital, MarTech & Digital GTM functions.'],
+      ['ContentOps Maturity', 'Undiscovered', 'Channel content management, use of SEO/GEO best practices within content deployment, aggressiveness of content calendar, campaign plans & analytics.'],
+      ['SDLC Process Oversight', 'Undiscovered', 'Software development lifecycle process assessment pending.'],
+      ['Authenticated User Behavior / Account Functionality', 'Undiscovered', 'Internal process efficiency for user management assessment pending.']
+    ]
+  },
+  {
+    name: 'Automation & AI',
+    score: '9 / 25',
+    percent: '36%',
+    tone: 'blue',
+    active: 3,
+    rows: [
+      ['AI Workflow Coverage', 'Low', 'AI is not yet embedded across common business processes and operational handoffs.'],
+      ['Internal Assistants', 'Undiscovered', 'Internal support automation and knowledge workflows need evaluation.'],
+      ['Reporting Automation', 'Medium', 'Some reporting is available, but automated insight delivery is limited.'],
+      ['Governance & Enablement', 'Low', 'AI usage standards, access, and success metrics need definition.']
+    ]
+  }
+] %}
+
+{% set next_steps = [
+  ['Digital Platform (Read-Only)', 'Usage of coding best practices. Analyze usage of 3rd party plugins.', 'Identify opportunities for performance optimizations. Identify security, performance or compliance gaps.'],
+  ['Analytics & Reporting Access', 'Tracking elements & dashboard configurations across channels & properties.', 'Review alignment of dashboards to business KPIs & decision making processes.'],
+  ['Compliance Management Solution', 'Risk exposure due to current non-compliance of consumer data protection & privacy laws.', 'Recommend efficient steps to compliance - Business Processes, Tech & Digital Asset Creation.'],
+  ['Account Created', 'Current ecosystem has an authenticated experience for users.', 'Analyze behavior, account functionality, personalization and retention opportunities.']
+] %}
+
+<main class="cxo-home">
+  {% include '@cxo_theme/front/hero.html.twig' with { categories: categories } only %}
+  {% include '@cxo_theme/front/category-cards.html.twig' with { categories: categories } only %}
+  {% include '@cxo_theme/front/detail-panels.html.twig' with { categories: categories, panels: panels } only %}
+  {% include '@cxo_theme/front/next-steps.html.twig' with { next_steps: next_steps } only %}
+  {% include '@cxo_theme/front/contact.html.twig' only %}
+  {% include '@cxo_theme/front/site-footer.html.twig' only %}
+  {% include '@cxo_theme/front/floating-actions.html.twig' only %}
+</main>
