@@ -9,14 +9,14 @@ RUN apt-get update && apt-get install -y \
         gd pdo pdo_mysql mysqli zip \
     && a2enmod rewrite
 
-# 🔥 IMPORTANT: Change Apache root to /web
-RUN sed -i 's|/var/www/html|/var/www/html/web|g' /etc/apache2/sites-available/000-default.conf
+# 🔥 DO NOT change Apache root
+# Drupal official image already configured correctly
 
-# Copy theme
-COPY themes /var/www/html/web/themes/custom
+# Copy theme safely
+COPY themes /opt/drupal/web/themes/custom
 
-# Permissions
-RUN chown -R www-data:www-data /var/www/html
+# Fix permissions
+RUN chown -R www-data:www-data /opt/drupal
 
 EXPOSE 80
 CMD ["apache2-foreground"]
