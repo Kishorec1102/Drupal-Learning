@@ -1,30 +1,22 @@
-# Use official Drupal image
 FROM drupal:10-apache
 
-# Install required extensions
+# Install extensions
 RUN apt-get update && apt-get install -y \
     git unzip libpng-dev libjpeg-dev libfreetype6-dev \
     libonig-dev libzip-dev zip curl \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install \
-        gd \
-        pdo \
-        pdo_mysql \
-        mysqli \
-        zip \
+        gd pdo pdo_mysql mysqli zip \
     && a2enmod rewrite
 
-# Set working directory
-WORKDIR /var/www/html
+# 🔥 IMPORTANT: Change Apache root to /web
+RUN sed -i 's|/var/www/html|/var/www/html/web|g' /etc/apache2/sites-available/000-default.conf
 
-# 🔥 COPY YOUR CUSTOM THEME
-COPY themes /var/www/html/themes/custom
+# Copy theme
+COPY themes /var/www/html/web/themes/custom
 
-# Fix permissions
+# Permissions
 RUN chown -R www-data:www-data /var/www/html
 
-# Expose port
 EXPOSE 80
-
-# Start Apache
 CMD ["apache2-foreground"]
