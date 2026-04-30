@@ -1,0 +1,124 @@
+{
+  "info": {
+    "_postman_id": "51627770-3898-4e28-aa64-c4f5716f8ffe",
+    "name": "Drupal API",
+    "description": "API collection for Drupal Headless CMS (Assessment Dashboard)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "27047554"
+  },
+  "item": [
+    {
+      "name": "Get Assessments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/jsonapi/node/assessment",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "jsonapi",
+            "node",
+            "assessment"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/jsonapi/node/category",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "jsonapi",
+            "node",
+            "category"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Assessment Items",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/jsonapi/node/assessment_item",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "jsonapi",
+            "node",
+            "assessment_item"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Assessment with Categories",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/jsonapi/node/assessment?include=field_categories",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "jsonapi",
+            "node",
+            "assessment"
+          ],
+          "query": [
+            {
+              "key": "include",
+              "value": "field_categories"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get Full Nested Data",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/jsonapi/node/assessment?include=field_categories,field_categories.field_items",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "jsonapi",
+            "node",
+            "assessment"
+          ],
+          "query": [
+            {
+              "key": "include",
+              "value": "field_categories,field_categories.field_items"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
